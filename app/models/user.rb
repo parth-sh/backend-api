@@ -12,6 +12,6 @@ class User < ApplicationRecord
   end
 
   generates_token_for :email_confirmation, expires_in: 24.hours do
-    email
+    email + confirmed_at.to_s
   end
 end
