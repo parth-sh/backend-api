@@ -25,7 +25,7 @@ class PasswordResetsController < ApplicationController
 
   def set_user_by_token
     @user = User.find_by_token_for(:password_reset, params[:token])
-    render json: { errors: ["Invalid user token, please start over"] }, status: :unauthorized unless @user.present?
+    render json: { errors: ["Invalid user token, Please try again"] }, status: :unauthorized unless @user.present?
   end
 
   def password_params
