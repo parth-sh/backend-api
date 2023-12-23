@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
   def find_by_email
+    reset_session
     user = User.find_by(email: params[:email])
     if user
       render json: user
