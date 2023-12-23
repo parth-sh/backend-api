@@ -1,4 +1,4 @@
-class PasswordResetsController < ApplicationController
+class Auth::PasswordResetsController < ApplicationController
   before_action :require_sign_out!
   before_action :set_user_by_token, only: [:update]
 

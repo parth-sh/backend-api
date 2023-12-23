@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Auth::SessionsController < ApplicationController
   def create
     if (user = User.authenticate_by(session_params))
       login user

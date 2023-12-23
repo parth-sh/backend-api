@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class Auth::RegistrationsController < ApplicationController
   before_action :set_user_by_token, only: [:confirm_email]
 
   def create
