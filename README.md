@@ -1,4 +1,4 @@
-This guide delves into Rails 7.1's API-only authentication, covering sessions, registration, login, and email verification. It includes updating passwords and securely resetting them via email. The UI, crafted using ChatGPT prompts, Next.js, Tailwind CSS, and DaisyUI, ensures these backend processes integrate smoothly with the frontend, providing a seamless and secure user experience.
+This guide revolves around API-only authentication using rails as backend covering sessions, registration, login, and email verification, updating passwords and resetting forgotten password via email. The UI, crafted using ChatGPT prompts, Next.js, Tailwind CSS, and DaisyUI, ensures these backend processes integrate smoothly with the frontend, providing a seamless and secure user experience.
 
 It introduces new rails features such as authenticate_by, ActiveSupport::CurrentAttributes, has_secure_password, normalizes, password_challenge, generates_token_for, password_salt.
 
