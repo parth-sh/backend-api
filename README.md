@@ -1,6 +1,6 @@
-This guide explores Rails 7.1's API-only authentication methods, covering user sessions, registration, login, and email verification. It delves into updating passwords and securely resetting forgotten ones via email. Additionally, it integrates these backend processes with the frontend user interface, ensuring a seamless and secure user experience.
+This guide delves into Rails 7.1's API-only authentication, covering sessions, registration, login, and email verification. It includes updating passwords and securely resetting them via email. The UI, crafted using ChatGPT prompts, Next.js, Tailwind CSS, and DaisyUI, ensures these backend processes integrate smoothly with the frontend, providing a seamless and secure user experience.
 
-It introduces new features such as authenticate_by, ActiveSupport::CurrentAttributes, has_secure_password, normalizes, password_challenge, generates_token_for, password_salt.
+It introduces new rails features such as authenticate_by, ActiveSupport::CurrentAttributes, has_secure_password, normalizes, password_challenge, generates_token_for, password_salt.
 
 References taken from:
 
@@ -166,6 +166,50 @@ Response:
 }
 ```
 
+Next, we'll create an API to locate users by email. If the user exists in the database, we'll redirect them to the login page. If the user does not exist, we'll direct them to the signup page.
+
+```rb
+# app/controllers/api/users_controller.rb
+class Api::UsersController < ApplicationController
+  def find_by_email
+    user = User.find_by(email: params[:email])
+    if user
+      render json: user
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+end
+```
+```rb
+# config/routes.rb
+namespace :api do
+  resources :users, only: [] do
+    collection do
+      get :find_by_email
+    end
+  end
+end
+```
+
+
+This blog's got its heart in the backend jungle 🌴, so I'm skipping the frontend safari here! For those adventurous souls eager to explore the frontend wilderness, fear not! Your map awaits at: 🗺️
+
+[Student Accommodation Portal on GitHub](https://github.com/parth-sh/Student-Accommodation-Portal) 🚀 Happy coding!
+
+![mainpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/txszy0amqzjt5l0auie9.png)
+
+![usercheck1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7munvdcb1bd6p6f005vc.png)
+
+![usercheck2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2rnuk5kc1bf8nw4qutx.png)
+
+![signup1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ggmv3rk3nfu5or28dx91.png)
+
+![signup2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u6rozzn3s2gokr27ecms.png)
+
+![signup3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8hy5d46iit6uypnrcaqh.png)
+
+
 Now, let's create our logout method. For this, we will add our code in sessions_controller.rb:
 ```rb
 # app/controllers/sessions_controller.rb
@@ -236,6 +280,20 @@ Response:
 }
 ```
 
+Extensively utilized ChatGPT for crafting registration and login screens, and customizing Tailwind CSS.
+
+![chatgptloginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vkbzt31xq4wbx81rdvcn.png)
+
+![chatgptloginpage2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tju99an4frlnpdqwfctt.png)
+
+![chatgptloginpage3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wadjtafe76iahlu4jqh5.png)
+
+![chatgptloginpage4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sexwangk92j3cnruep8r.png)
+
+![loginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v6erjgcg13ejn5x806gd.png)
+
+![logout](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sclj4crdgsakxva44ex9.png)
+
 Next, let's address editing the password. For this, we will create a passwords_controller, but before that, let's create a helper method authenticate_user!, which will prevent us from using the API if the user is not logged in:
 ```rb
 # app/controllers/application_controller.rb
@@ -265,7 +323,6 @@ In passwords_controller.rb:
 ```
 
 A new feature we have is the password_challenge in has_secure_password, so it will define these virtual attributes and if you have a password_challenge submitted it's going to make sure that matches the current password in the database, that way you can verify the current password before you change the password to a new one. In order to evade this, a user can simply delete the password_challenge field out of the HTML and only submit password, password_confirmation and if you skip that, this password_challenge would be nil and it will skip that confirmation, so the way we can do that is we use with_defaults(password_challenge: "") and as long as this is not nil then it will go ahead and verify the current password. That's a small adjustment you can make to your password controller to use that new validation feature.
-
 
 Let's try out the passwords#update API:
 ```json
@@ -303,6 +360,18 @@ Error Response:
     ]
 }
 ```
+Designed "update password" screens using ChatGPT.
+
+![chatgptupdatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s02gzrur0v6efo0ysuwp.png)
+
+![chatgptupdatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2553ffhm2nla1ryeorg.png)
+
+![chatgptupdatepass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7dn25l1ap4c84xqfs2el.png)
+
+![updatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m899j15jfnwie4fmzi0u.png)
+
+![updatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d6bw2l1slzoin64gqbfn.png)
+
 
 Now let's generate our forgot password, password reset flow, which will use the latest feature from rails 7.1 generates_token_for and this method will allow generating tokens that don't have to be stored in our database and also one-time use, so if we do
 ```rb
@@ -485,6 +554,22 @@ Response:
 }
 ```
 
+Implemented the "forgot password" feature in the frontend using ChatGPT, which significantly simplified the process.
+
+![chatgptforgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h0tnrg5m2rolqwd9c7sr.png)
+
+![chatgptforgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6lm22fj3d6l2pi39c9oq.png)
+
+![chatgptforgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cj2pd7dniyl8qwn9fnnm.png)
+
+![forgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/myj144ti78lrzgafrlrv.png)
+
+![forgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jvqx10az8nnpphgwn30z.png)
+
+![forgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b52pm90o906cqywgcw4z.png)
+
+![forgotpass4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j953au6lf7q31vjrsbql.png)
+
 Now, let's add email confirmation for our users. When a user registers, we will send them an email to confirm their account.
 
 First, we need to add a column to our user model:
@@ -507,6 +592,22 @@ Here, we've used the combination of 'email' and 'confirmed_at' to create the tok
 Let's create a method to confirm the email in our registrations_controller.rb:
 ```rb
 # app/controller/registrations_controller.rb
+before_action :set_user_by_token, only: [:confirm_email]
+
+def create
+  user = User.new(registration_params)
+  if user.save
+    login user
+    UserMailer.with(
+      user: user,
+      token: user.generate_token_for(:email_confirmation)
+    ).email_confirmation.deliver_later
+    render json: { message: "Registration successful! Please check your email to confirm your account" }
+  else
+    render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+  end
+end
+
 def confirm_email
   if @user.update(confirmed_at: Time.current)
     render json: { message: "Your email has been successfully confirmed. Please proceed to log in", user: @user, session: session }
@@ -625,6 +726,8 @@ Response:
 }
 ```
 
+![signup3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0dbk2u81vcel4y7rfi7e.png)
+
 ---
 
 ## Frontend Integration
@@ -644,33 +747,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource "*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
-end
-```
-
-
-Next, we'll create an API to locate users by email. If the user exists in the database, we'll redirect them to the login page. If the user does not exist, we'll direct them to the signup page.
-
-```rb
-# app/controllers/api/users_controller.rb
-class Api::UsersController < ApplicationController
-  def find_by_email
-    user = User.find_by(email: params[:email])
-    if user
-      render json: user
-    else
-      render json: { error: 'User not found' }, status: :not_found
-    end
-  end
-end
-```
-```rb
-# config/routes.rb
-namespace :api do
-  resources :users, only: [] do
-    collection do
-      get :find_by_email
-    end
   end
 end
 ```
@@ -703,61 +779,3 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 end
 ```
 This adjustment ensures proper handling of the 'Access-Control-Allow-Credentials' header.
-
-
-
-This blog's got its heart in the backend jungle 🌴, so I'm skipping the frontend safari here! For those adventurous souls eager to explore the frontend wilderness, fear not! Your map awaits at: 🗺️
-
-[Student Accommodation Portal on GitHub](https://github.com/parth-sh/Student-Accommodation-Portal) 🚀 Happy coding!
-
-![mainpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/txszy0amqzjt5l0auie9.png)
-
-![usercheck1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7munvdcb1bd6p6f005vc.png)
-
-![signup1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ggmv3rk3nfu5or28dx91.png)
-
-![signup2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u6rozzn3s2gokr27ecms.png)
-
-![signup3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0dbk2u81vcel4y7rfi7e.png)
-
-Extensively utilized ChatGPT for crafting registration and login screens, and customizing Tailwind CSS.
-
-![chatgptloginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vkbzt31xq4wbx81rdvcn.png)
-
-![chatgptloginpage2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tju99an4frlnpdqwfctt.png)
-
-![chatgptloginpage3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wadjtafe76iahlu4jqh5.png)
-
-![chatgptloginpage4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sexwangk92j3cnruep8r.png)
-
-![loginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v6erjgcg13ejn5x806gd.png)
-
-![logout](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sclj4crdgsakxva44ex9.png)
-
-Implemented the "forgot password" feature in the frontend using ChatGPT, which significantly simplified the process.
-
-![chatgptforgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h0tnrg5m2rolqwd9c7sr.png)
-
-![chatgptforgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6lm22fj3d6l2pi39c9oq.png)
-
-![chatgptforgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cj2pd7dniyl8qwn9fnnm.png)
-
-![forgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/myj144ti78lrzgafrlrv.png)
-
-![forgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jvqx10az8nnpphgwn30z.png)
-
-![forgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b52pm90o906cqywgcw4z.png)
-
-![forgotpass4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j953au6lf7q31vjrsbql.png)
-
-Designed "update password" screens using ChatGPT.
-
-![chatgptupdatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s02gzrur0v6efo0ysuwp.png)
-
-![chatgptupdatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2553ffhm2nla1ryeorg.png)
-
-![chatgptupdatepass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7dn25l1ap4c84xqfs2el.png)
-
-![updatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m899j15jfnwie4fmzi0u.png)
-
-![updatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d6bw2l1slzoin64gqbfn.png)
