@@ -710,59 +710,54 @@ This blog's got its heart in the backend jungle 🌴, so I'm skipping the fronte
 
 [Student Accommodation Portal on GitHub](https://github.com/parth-sh/Student-Accommodation-Portal) 🚀 Happy coding!
 
-![Main page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/txszy0amqzjt5l0auie9.png)
+![mainpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/txszy0amqzjt5l0auie9.png)
 
-![User Check page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7munvdcb1bd6p6f005vc.png)
+![usercheck1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7munvdcb1bd6p6f005vc.png)
 
-![Sign up page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ggmv3rk3nfu5or28dx91.png)
+![signup1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ggmv3rk3nfu5or28dx91.png)
 
+![signup2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u6rozzn3s2gokr27ecms.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u6rozzn3s2gokr27ecms.png)
+![signup3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0dbk2u81vcel4y7rfi7e.png)
 
+Extensively utilized ChatGPT for crafting registration and login screens, and customizing Tailwind CSS.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0dbk2u81vcel4y7rfi7e.png)
+![chatgptloginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vkbzt31xq4wbx81rdvcn.png)
 
+![chatgptloginpage2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tju99an4frlnpdqwfctt.png)
 
-Used ChatGPT extensively to create registration and login screens, adjusting tailwind css
+![chatgptloginpage3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wadjtafe76iahlu4jqh5.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vkbzt31xq4wbx81rdvcn.png)
+![chatgptloginpage4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sexwangk92j3cnruep8r.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tju99an4frlnpdqwfctt.png)
+![loginpage1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v6erjgcg13ejn5x806gd.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wadjtafe76iahlu4jqh5.png)
+![logout](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sclj4crdgsakxva44ex9.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sexwangk92j3cnruep8r.png)
+Implemented the "forgot password" feature in the frontend using ChatGPT, which significantly simplified the process.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v6erjgcg13ejn5x806gd.png)
+![chatgptforgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h0tnrg5m2rolqwd9c7sr.png)
 
+![chatgptforgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6lm22fj3d6l2pi39c9oq.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sclj4crdgsakxva44ex9.png)
+![chatgptforgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cj2pd7dniyl8qwn9fnnm.png)
 
+![forgotpass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/myj144ti78lrzgafrlrv.png)
 
-Implemented forgot password feature using chatgpt in frontend. It really make things easy
+![forgotpass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jvqx10az8nnpphgwn30z.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h0tnrg5m2rolqwd9c7sr.png)
+![forgotpass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b52pm90o906cqywgcw4z.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6lm22fj3d6l2pi39c9oq.png)
+![forgotpass4](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j953au6lf7q31vjrsbql.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cj2pd7dniyl8qwn9fnnm.png)
+Designed "update password" screens using ChatGPT.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/myj144ti78lrzgafrlrv.png)
+![chatgptupdatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s02gzrur0v6efo0ysuwp.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jvqx10az8nnpphgwn30z.png)
+![chatgptupdatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2553ffhm2nla1ryeorg.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b52pm90o906cqywgcw4z.png)
+![chatgptupdatepass3](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7dn25l1ap4c84xqfs2el.png)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j953au6lf7q31vjrsbql.png)
+![updatepass1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m899j15jfnwie4fmzi0u.png)
 
-Creating screens for update passwords, via chatgpt
-
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s02gzrur0v6efo0ysuwp.png)
-
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v2553ffhm2nla1ryeorg.png)
-
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7dn25l1ap4c84xqfs2el.png)
-
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m899j15jfnwie4fmzi0u.png)
-
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d6bw2l1slzoin64gqbfn.png)
+![updatepass2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d6bw2l1slzoin64gqbfn.png)
