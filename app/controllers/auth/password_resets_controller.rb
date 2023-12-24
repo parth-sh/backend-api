@@ -10,12 +10,12 @@ class Auth::PasswordResetsController < ApplicationController
       ).password_reset.deliver_later
     end
 
-    render json: { message: "Check your email to reset your password", user: user, session: session }
+    render json: { message: "Check your email to reset your password" }
   end
 
   def update
     if @user.update(password_params)
-      render json: { message: "Password has been reset successfully, Please login", user: @user, session: session }
+      render json: { message: "Password has been reset successfully, Please login" }
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -29,6 +29,6 @@ class Auth::PasswordResetsController < ApplicationController
   end
 
   def password_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.permit(:password, :password_confirmation)
   end
 end

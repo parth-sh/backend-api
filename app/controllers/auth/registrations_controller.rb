@@ -9,7 +9,7 @@ class Auth::RegistrationsController < ApplicationController
         user: user,
         token: user.generate_token_for(:email_confirmation)
       ).email_confirmation.deliver_later
-      render json: { message: "Registration successful! Please check your email to confirm your account", user: user, session: session }
+      render json: { message: "Registration successful! Please check your email to confirm your account" }
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -17,7 +17,7 @@ class Auth::RegistrationsController < ApplicationController
 
   def confirm_email
     if @user.update(confirmed_at: Time.current)
-      render json: { message: "Your email has been successfully confirmed. Please proceed to log in", user: @user, session: session }
+      render json: { message: "Your email has been successfully confirmed. Please proceed to log in" }
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end

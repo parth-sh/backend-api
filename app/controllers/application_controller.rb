@@ -3,12 +3,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_user!
-    render json: { message: "You must be logged in to do that", user: current_user, session: session },
+    render json: { errors: ["You must be logged in to do that"] },
            status: :unauthorized unless user_signed_in?
   end
 
   def require_sign_out!
-    render json: { message: "You must be logged out to do that", user: current_user, session: session },
+    render json: { errors: ["You must be logged out to do that"] },
            status: :unauthorized if user_signed_in?
   end
 
