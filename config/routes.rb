@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   root to: proc { [404, {}, []] }
 
   namespace :api do
-    resources :users, only: [] do
+    resource :users, only: [] do
       collection do
         get :find_by_email
       end
     end
+    resources :home, only: [:index]
   end
 end
