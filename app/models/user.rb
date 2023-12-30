@@ -14,4 +14,12 @@ class User < ApplicationRecord
   generates_token_for :email_confirmation, expires_in: 24.hours do
     email + confirmed_at.to_s
   end
+
+  has_one :profile, dependent: :destroy
+  after_create :create_profile
+
+  def create_profile
+    self.profile = Profile.new
+    save!
+  end
 end
