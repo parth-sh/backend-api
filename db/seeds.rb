@@ -7,8 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-10.times do
-  Property.create!(
+10.times do |index|
+  property = Property.create!(
     name: Faker::Lorem.word,
     headline: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
@@ -16,7 +16,12 @@
     city: Faker::Address.city,
     state: Faker::Address.state,
     zip_code: Faker::Address.zip_code,
-    country: "United States"
+    country: "United States",
+  )
+
+  property.images.attach(
+    io: File.open(Rails.root.join("db", "sample", "images", "property_#{index + 1}.jpeg")),
+    filename: property.name.to_s
   )
 end
 
