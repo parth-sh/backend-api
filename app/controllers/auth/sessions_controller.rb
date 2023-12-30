@@ -7,6 +7,7 @@ class Auth::SessionsController < ApplicationController
       render json: { errors: ["Invalid email or password"] }, status: :unprocessable_entity
     end
   end
+
   def destroy
     logout current_user
     render json: { message: "Logged out successfully" }
@@ -15,6 +16,6 @@ class Auth::SessionsController < ApplicationController
   private
 
   def session_params
-    params.permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end
