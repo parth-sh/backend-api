@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         get :find_by_email
       end
     end
-    resources :home, only: [:index]
+    resource :properties, only: [:show]
+    resource :profile, only: [:show]
   end
 end
