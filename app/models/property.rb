@@ -19,4 +19,6 @@ class Property < ApplicationRecord
   def formatted_price
     self.price.format(no_cents: true)
   end
+
+  has_many_attached :images, dependent: :destroy
 end

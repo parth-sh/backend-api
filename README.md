@@ -26,3 +26,9 @@ bundle install
 rails g money_rails:initializer
 rails g migration add_price_cents_to_properties
 rails db:migrate
+
+## Add Active storage
+image_processing gem. Uncomment it in your Gemfile
+bin/rails active_storage:install
+bin/rails db:migrate
+config.active_storage.service = :local
