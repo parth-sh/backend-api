@@ -21,4 +21,10 @@ class Property < ApplicationRecord
   end
 
   has_many_attached :images, dependent: :destroy
+  def default_image
+    # ActiveStorage::Blob.service.send(:path_for, images.first.key)
+    blob = images.first.blob
+    base64_image = Base64.encode64(blob.download)
+    return base64_image
+  end
 end

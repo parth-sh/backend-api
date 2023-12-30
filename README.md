@@ -32,3 +32,11 @@ image_processing gem. Uncomment it in your Gemfile
 bin/rails active_storage:install
 bin/rails db:migrate
 config.active_storage.service = :local
+Prepared seeds to attach files
+rails db:reset
+rails db:seed
+
+Warning while db reset: ActiveStorage on Rails 7.0.1 forces vips #44211
+https://github.com/rails/rails/issues/44211#issuecomment-1017461170
+config.active_storage.variant_processor = :mini_magick
+https://stackoverflow.com/questions/58120323/how-do-i-get-the-local-path-to-an-active-storage-blob
