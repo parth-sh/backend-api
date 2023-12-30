@@ -19,3 +19,10 @@ rails g model profile user:references address_1:string address_2:string city:str
 rails db:migrate
 rails g migration add_zip_code_to_profiles zip_code:string
 rails db:migrate
+
+## Adding money to properties
+gem 'money-rails'
+bundle install
+rails g money_rails:initializer
+rails g migration add_price_cents_to_properties
+rails db:migrate

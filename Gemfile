@@ -48,3 +48,4 @@ end
 
 gem "geocoder"
 
+gem "money-rails"

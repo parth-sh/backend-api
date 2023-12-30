@@ -10,9 +10,13 @@ class Property < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.latitude.blank? and obj.longitude.blank? }
-
   def address
     # [address_1, address_2, city, state + " " + zip_code[0,5], country].compact.join(', ') # Can't be used for fake addresses
     [state, country].compact.join(', ')
+  end
+
+  monetize :price_cents, allow_nil: true
+  def formatted_price
+    self.price.format(no_cents: true)
   end
 end

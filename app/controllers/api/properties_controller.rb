@@ -1,6 +1,6 @@
 class Api::PropertiesController < ApplicationController
   def show
-    @property = Property.all
-    render json: @property
+    @properties = Property.all
+    render json: @properties.as_json(methods: :formatted_price)
   end
 end

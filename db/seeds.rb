@@ -19,3 +19,8 @@
     country: "United States"
   )
 end
+
+Property.find_each do |property|
+  property.price = Money.from_amount((500..700).to_a.sample, "USD")
+  property.save!
+end
