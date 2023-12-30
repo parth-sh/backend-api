@@ -70,4 +70,6 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+
+  config.active_storage.variant_processor = :mini_magick
 end
