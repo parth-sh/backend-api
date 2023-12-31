@@ -72,4 +72,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
 
   config.active_storage.variant_processor = :mini_magick
+
+  # https://guides.rubyonrails.org/active_record_migrations.html#using-the-sql-schema-dumper
+  # config.active_record.schema_format = :sql # However, db/schema.rb cannot express everything your database may support such as triggers, sequences, stored procedures, etc.
 end
