@@ -73,3 +73,7 @@ rails g db:migrate
 Created has_many_through association in user model
 Created has_many_through association in property model
 Created favourites controller
+
+### Uniqueness in favourites join table
+rails g migration add_unique_index_to_favourites
+rails db:migrate
