@@ -27,4 +27,9 @@ class Property < ApplicationRecord
     base64_image = Base64.encode64(blob.download)
     return base64_image
   end
+
+  has_many :reviews, as: :reviewable
+  def average_rating
+    reviews.average(:rating).to_f
+  end
 end

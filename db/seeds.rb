@@ -17,15 +17,15 @@
     state: Faker::Address.state,
     zip_code: Faker::Address.zip_code,
     country: "United States",
+    price: Money.from_amount((500..700).to_a.sample, "USD"),
   )
 
   property.images.attach(
     io: File.open(Rails.root.join("db", "sample", "images", "property_#{index + 1}.jpeg")),
     filename: property.name.to_s
   )
-end
 
-Property.find_each do |property|
-  property.price = Money.from_amount((500..700).to_a.sample, "USD")
-  property.save!
+  (1..5).to_a.sample.times do
+    Review.create(reviewable: property, rating: (1..5).to_a.sample, title: Faker::Lorem.word, body: Faker::Lorem.paragraph)
+  end
 end

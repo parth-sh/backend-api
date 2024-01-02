@@ -40,3 +40,10 @@ Warning while db reset: ActiveStorage on Rails 7.0.1 forces vips #44211
 https://github.com/rails/rails/issues/44211#issuecomment-1017461170
 config.active_storage.variant_processor = :mini_magick
 https://stackoverflow.com/questions/58120323/how-do-i-get-the-local-path-to-an-active-storage-blob
+
+## Reviews
+rails g model review
+Make migration columns
+Add polymorphic to review model
+rails db:migrate
+
