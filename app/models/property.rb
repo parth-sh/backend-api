@@ -1,3 +1,5 @@
+# froze_string_literal: true
+
 class Property < ApplicationRecord
   validates :name, presence: true
   validates :headline, presence: true
@@ -39,5 +41,12 @@ class Property < ApplicationRecord
     blob = images.first.blob
     base64_image = Base64.encode64(blob.download)
     return base64_image
+  end
+
+  def available_dates
+    next_reservation = reservations.future_reservations.first
+    date_format = "%b %e"
+    return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) unless next_reservation
+    Date.tomorrow.strftime(date_format)..next_reservation.reservation_date.strftime(date_format)
   end
 end
