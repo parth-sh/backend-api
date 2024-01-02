@@ -66,3 +66,10 @@ def update_average_rating
 end
 ```
 irb(main):002> Review.find_each{|r| r.save}
+
+## Handling favourites properties
+rails g model favourite user:references property:references
+rails g db:migrate
+Created has_many_through association in user model
+Created has_many_through association in property model
+Created favourites controller

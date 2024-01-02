@@ -22,9 +22,11 @@ Rails.application.routes.draw do
     resource :users, only: [] do
       collection do
         get :find_by_email
+        get :favourite_properties
       end
     end
     resource :properties, only: [:show]
     resource :profile, only: [:show, :update]
+    resource :favourite, only: [:create, :destroy]
   end
 end

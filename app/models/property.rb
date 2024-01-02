@@ -10,23 +10,31 @@ class Property < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.latitude.blank? and obj.longitude.blank? }
+
+  monetize :price_cents, allow_nil: true
+
+  has_many_attached :images, dependent: :destroy
+
+  has_many :reviews, as: :reviewable
+
+  has_many :favourite, dependent: :destroy
+  has_many :favourite_users, through: :favourite, source: :user
+
+  private
+
   def address
     # [address_1, address_2, city, state + " " + zip_code[0,5], country].compact.join(', ') # Can't be used for fake addresses
     [state, country].compact.join(', ')
   end
 
-  monetize :price_cents, allow_nil: true
   def formatted_price
     self.price.format(no_cents: true)
   end
 
-  has_many_attached :images, dependent: :destroy
   def default_image
     # ActiveStorage::Blob.service.send(:path_for, images.first.key)
     blob = images.first.blob
     base64_image = Base64.encode64(blob.download)
     return base64_image
   end
-
-  has_many :reviews, as: :reviewable
 end
