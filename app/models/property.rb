@@ -20,6 +20,9 @@ class Property < ApplicationRecord
   has_many :favourite, dependent: :destroy
   has_many :favourite_users, through: :favourite, source: :user
 
+  has_many :reservations, dependent: :destroy
+  has_many :reserved_users, through: :reservations, source: :user
+
   private
 
   def address

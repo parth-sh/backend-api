@@ -77,3 +77,11 @@ Created favourites controller
 ### Uniqueness in favourites join table
 rails g migration add_unique_index_to_favourites
 rails db:migrate
+
+## Adding Reservation model
+rails g model reservation property:references user:references reservation_date:date
+rails db:migrate
+Added validation in reservation model
+Added association in user model
+Added association in property model
+rails g migration add_unique_index_to_reservations

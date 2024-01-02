@@ -21,6 +21,9 @@ class User < ApplicationRecord
   has_many :favourite, dependent: :destroy
   has_many :favourite_properties, through: :favourite, source: :property
 
+  has_many :reservations, dependent: :destroy
+  has_many :reserved_properties, through: :reservations, source: :user
+
   private
 
   def create_profile
