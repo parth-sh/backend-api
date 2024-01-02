@@ -29,7 +29,4 @@ class Property < ApplicationRecord
   end
 
   has_many :reviews, as: :reviewable
-  def average_rating
-    reviews.average(:rating).to_f
-  end
 end

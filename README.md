@@ -47,3 +47,22 @@ Make migration columns
 Add polymorphic to review model
 rails db:migrate
 
+## Optimizing reviews model
+Using :counter_cache option, in rails associations
+rails g migration add_reviews_count_to_property reviews_count:integer
+rails db:migrate
+Added counter_cache option to review model
+Property.reset_counters(Property.first.id, :reviews)
+irb(main):012* Property.find_each do |property|
+irb(main):013*   Property.reset_counters(property.id, :reviews)
+irb(main):014> end
+
+### Optimizing average rating
+rails g migration add_average_rating_to_properties average_rating:decimal
+rails db:migrate
+```
+def update_average_rating
+    reviewable.update!(average_rating: reviewable.reviews.average(:rating))
+end
+```
+irb(main):002> Review.find_each{|r| r.save}
